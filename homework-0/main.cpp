@@ -4,10 +4,10 @@
 using namespace std;
 
 /* function declarations here */
-void inputArray(int inputArr[5]);
-void doubleInputArray(int inputArr[], int outputArr[]);
-void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][2]);
-void printMatrix(int matrix[][2]);
+void inputArray(int*);
+void doubleInputArray(int*, int*);
+void copyArrayToMatrix(int*, int*, int(*)[2]);
+void printMatrix(int(*)[2]);
 
 /*  Main program to test various functions defined in this file. */
 int main()
