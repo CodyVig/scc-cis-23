@@ -3,13 +3,16 @@
 
 using namespace std;
 
-/* function declarations here */
+// function declarations here
+
 void inputArray(int*);
 void doubleInputArray(int*, int*);
 void copyArrayToMatrix(int*, int*, int(*)[2]);
 void printMatrix(int(*)[2]);
 
-/*  Main program to test various functions defined in this file. */
+/** 
+ * Main program to test various functions defined in this file. 
+ */
 int main()
 {
     int arrSize = 5;
@@ -24,9 +27,11 @@ int main()
     printMatrix(mat);
 }
 
-/* define all functions here */
-
-/* Populates array with user-selected integers. */
+/**
+ * Populates array with user-selected integers. 
+ *
+ * @param inputArr: An integer array of length 5.
+ */
 void inputArray(int inputArr[5])
 { 
     cout << "Enter five (5) array elemets: \n";
@@ -37,7 +42,12 @@ void inputArray(int inputArr[5])
     }
 }
 
-/* Populates `outputArr` with the double */
+/**
+ * Populates `outputArr` with the doubles of the elements of `inputArray`.
+ *
+ * @param inputArr: The array to be doubled.
+ * @param outpuptArray: The desination of the doubled array.
+ */
 void doubleInputArray(int inputArr[], int outputArr[]) 
 { 
     int arraySize = 5; 
@@ -47,6 +57,13 @@ void doubleInputArray(int inputArr[], int outputArr[])
     }
 }
 
+/**
+ * Copies input arrays into a matrix.
+ *
+ * @param inputArray1: The first row of the matrix.
+ * @param inputArray2: The second row of the matrix.
+ * @param otputMatrix: The destination of the matrix.
+ */
 void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][2])
 { 
     int arraySize = 5;
@@ -57,6 +74,11 @@ void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][
     }
 }
 
+/**
+ * Prints a matrix to the console.
+ *
+ * @param matrix: The matrix whose elements are to be printed.
+ */
 void printMatrix(int matrix[][2])
 { 
     int arraySize = 5; 
