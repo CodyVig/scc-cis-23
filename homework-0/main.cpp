@@ -8,7 +8,7 @@ using namespace std;
 void inputArray(int*);
 void doubleInputArray(int*, int*);
 void copyArrayToMatrix(int*, int*, int(*)[2]);
-void printMatrix(int(*)[2]);
+void printMatrix(int(*)[2], bool);
 
 /** 
  * Main program to test various functions defined in this file. 
@@ -24,7 +24,7 @@ int main()
     inputArray(arr1);
     doubleInputArray(arr1, arr2);
     copyArrayToMatrix(arr1, arr2, mat);
-    printMatrix(mat);
+    printMatrix(mat, true); // `true` will save the matrix to a file.
 }
 
 /**
@@ -78,8 +78,9 @@ void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][
  * Prints a matrix to the console.
  *
  * @param matrix: The matrix whose elements are to be printed.
+ * @param saveToFile: Whether the matrix should be printed to a file.
  */
-void printMatrix(int matrix[][2])
+void printMatrix(int matrix[][2], bool saveToFile = false)
 { 
     int arraySize = 5; 
     cout << "Matrix = \n";
@@ -90,5 +91,20 @@ void printMatrix(int matrix[][2])
             cout << matrix[col][row] << " ";
         }
         cout << endl;
+    }
+
+    if (saveToFile)
+    {
+        ofstream matrixFile;
+        matrixFile.open("mat.txt");
+        for (int row = 0; row < 2; row++)
+        {
+            for (int col = 0; col < arraySize; col++)
+            {
+                matrixFile << matrix[col][row] << " ";
+            }
+            matrixFile << endl;
+        }
+        matrixFile.close();
     }
 }
