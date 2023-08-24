@@ -1,7 +1,7 @@
 /*
-Question 1: Explain briefly what the difference is between a struct and a class.
-            When would you use one over the other?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Question 1: Explain briefly what the difference is between a struct and a
+            class. When would you use one over the other?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Answer:     Structs and classes are both abstractions used to group objects of
             similar characteristics. The most obvious difference is that the
             attributes of a struct are public by default and the attributes of
@@ -60,7 +60,6 @@ int main()
         0,                                   // Sold
         265                                  // Pages
     );
-
     bookType bak = bookType(
         "Complex Analysis", // Title
         "Joseph Bak",       // Author
@@ -73,7 +72,6 @@ int main()
 
     // Create two memberType instantiations
     memberType cody = memberType("Cody", "Vig", 101909650, 0, 0);
-
     memberType gauss = memberType();
 
     cout << "Before purchase...\n==================\n";
@@ -112,8 +110,8 @@ void processPurchase(memberType &member, bookType &book)
 {
     /*
     Question 4: Why use references as input to this function?
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Answer:     We use references becase we do not need to load all attributes
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Answer:     We use references because we do not need all of the attributes
                 from each class instance to be passed as parameters. Passing
                 by reference is more memory efficient.
     */

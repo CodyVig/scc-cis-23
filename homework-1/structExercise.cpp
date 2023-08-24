@@ -1,5 +1,3 @@
-#include <cmath>
-
 /**
  * Struct abstracting the idea of (x, y) points in R^2.
  */
