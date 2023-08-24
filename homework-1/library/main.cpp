@@ -10,46 +10,17 @@ Answer:     Structs and classes are both abstractions used to group objects of
             are inteded to be written. Otherwise, classes are used.
 */
 
-#include <cmath>
-#include <iostream>
-
-// For problem 2:
-#include "structExercise.cpp"
-
-// For problem 4:
 #include "bookType.h"
 #include "memberType.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-double computeDistance(const coordinate &, const coordinate &);
 void processPurchase(memberType &, bookType &);
 
 int main()
 {
-    // The following is code for problem 2 of the homework.
-    cout << "For problem 2..." << endl;
-    cout << "~~~~~~~~~~~~~~~~" << endl;
-
-    coordinate p1;
-    coordinate p2;
-    double dist;
-
-    cout << "Enter x and y coordinates: ";
-    cin >> p1.x >> p1.y;
-    cout << "Enter a second x and y coordinate: ";
-    cin >> p2.x >> p2.y;
-
-    dist = computeDistance(p1, p2);
-
-    cout << "The distance between "
-         << "(" << p1.x << ", " << p1.y << ") and (" << p2.x << ", " << p2.y
-         << ") is " << dist << "." << endl;
-
-    // The following is code for problems 3 and 4 of the homework.
-    cout << "\nFor problems 3 and 4..." << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-
     // Create two bookType instantiations
     bookType millman = bookType(
         "Elements of Differential Geometry", // Title
@@ -74,29 +45,17 @@ int main()
     memberType cody = memberType("Cody", "Vig", 101909650, 0, 0);
     memberType gauss = memberType();
 
-    cout << "Before purchase...\n==================\n";
+    cout << "Before purchase...\n~~~~~~~~~~~~~~~~~~\n";
     bak.printBook();
     cody.printMemberInformation();
 
     processPurchase(cody, bak);
 
-    cout << "After purchase...\n=================\n";
+    cout << "After purchase...\n~~~~~~~~~~~~~~~~~\n";
     bak.printBook();
     cody.printMemberInformation();
 
     return 0;
-}
-
-/**
- * Returns the Euclidean distance between coordinates `p1` and `p2`.
- *
- * @param p1: The first coordinate.
- * @param p2: The second coordinate.
- * @return A double representing the Euclidean distance |p2 - p1|.
- */
-double computeDistance(const coordinate &p1, const coordinate &p2)
-{
-    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
 
 /**
