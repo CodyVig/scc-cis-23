@@ -6,8 +6,8 @@ Answer:     Structs and classes are both abstractions used to group objects of
             similar characteristics. The most obvious difference is that the
             attributes of a struct are public by default and the attributes of
             a class are private by default. In practice, it is customary to use
-            structs only for containing public data and if no member functions
-            are inteded to be written. Otherwise, classes are used.
+            structs only for containing public data with which no member
+            functions are intended to be written. Otherwise, classes are used.
 */
 
 #include "bookType.h"
@@ -70,9 +70,10 @@ void processPurchase(memberType &member, bookType &book)
     /*
     Question 4: Why use references as input to this function?
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Answer:     We use references because we do not need all of the attributes
-                from each class instance to be passed as parameters. Passing
-                by reference is more memory efficient.
+    Answer:     We are passing these classes by reference instead of by value
+                because our intention is to edit attributes of these classes.
+                Also, we do not intend to access *all* of the memebers of each
+                class in our method, so passing by value is memory inefficient.
     */
 
     int copiesSold = book.getSoldQuantity();
