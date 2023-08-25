@@ -1,17 +1,17 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
 // function declarations here
 
-void inputArray(int*);
-void doubleInputArray(int*, int*);
-void copyArrayToMatrix(int*, int*, int(*)[2]);
-void printMatrix(int(*)[2], bool);
+void inputArray(int *);
+void doubleInputArray(int *, int *);
+void copyArrayToMatrix(int *, int *, int (*)[2]);
+void printMatrix(int (*)[2], bool);
 
-/** 
- * Main program to test various functions defined in this file. 
+/**
+ * Main program to test various functions defined in this file.
  */
 int main()
 {
@@ -19,7 +19,7 @@ int main()
     int arr1[arrSize];
     int arr2[arrSize];
     int mat[5][2];
-    
+
     /* test functions here */
     inputArray(arr1);
     doubleInputArray(arr1, arr2);
@@ -28,12 +28,12 @@ int main()
 }
 
 /**
- * Populates array with user-selected integers. 
+ * Populates array with user-selected integers.
  *
  * @param inputArr: An integer array of length 5.
  */
 void inputArray(int inputArr[5])
-{ 
+{
     cout << "Enter five (5) array elemets: \n";
     for (int idx = 0; idx < 5; idx++)
     {
@@ -48,9 +48,9 @@ void inputArray(int inputArr[5])
  * @param inputArr: The array to be doubled.
  * @param outpuptArray: The desination of the doubled array.
  */
-void doubleInputArray(int inputArr[], int outputArr[]) 
-{ 
-    int arraySize = 5; 
+void doubleInputArray(int inputArr[], int outputArr[])
+{
+    int arraySize = 5;
     for (int idx = 0; idx < arraySize; idx++)
     {
         outputArr[idx] = 2 * inputArr[idx];
@@ -64,8 +64,10 @@ void doubleInputArray(int inputArr[], int outputArr[])
  * @param inputArray2: The second row of the matrix.
  * @param otputMatrix: The destination of the matrix.
  */
-void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][2])
-{ 
+void copyArrayToMatrix(
+    int inputArray1[], int inputArray2[], int outputMatrix[][2]
+)
+{
     int arraySize = 5;
     for (int idx = 0; idx < arraySize; idx++)
     {
@@ -81,8 +83,8 @@ void copyArrayToMatrix(int inputArray1[], int inputArray2[], int outputMatrix[][
  * @param saveToFile: Whether the matrix should be printed to a file.
  */
 void printMatrix(int matrix[][2], bool saveToFile = false)
-{ 
-    int arraySize = 5; 
+{
+    int arraySize = 5;
     cout << "Matrix = \n";
     for (int row = 0; row < 2; row++)
     {
