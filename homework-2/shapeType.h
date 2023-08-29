@@ -13,21 +13,21 @@ using namespace std;
 class shapeType
 {
 private:
-	double area;
-	double perimeter;
+    double area;
+    double perimeter;
 
 public:
-	// setters and getters
-	void setArea(double a);
-	void setPerimeter(double p);
-	double getArea() const;
-	double getPerimeter() const;
+    // setters and getters
+    void setArea(double a);
+    void setPerimeter(double p);
+    double getArea() const;
+    double getPerimeter() const;
 
-	// print some info about the shape
-	void print() const;
+    // print some info about the shape
+    void print() const;
 
-	// constructor
-	shapeType();
+    // constructor
+    shapeType();
 };
 
 #endif
