@@ -1,3 +1,9 @@
+/*****************************************************************************
+ * Author:       Cody Vig
+ * Assignment:   Homework 1
+ * Due Date:     August 31, 2023.
+ *****************************************************************************/
+
 /*
 Question 1: Explain briefly what the difference is between a struct and a
             class. When would you use one over the other?
