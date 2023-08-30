@@ -9,6 +9,10 @@ Subclass of `shapeType` which stores information about circles.
 #include "shapeType.h"
 #include <iostream>
 
+/**
+ * Child class of `shapeType` which encodes information about circles. Contains
+ * a double `radius` and pointType `center`.
+ */
 class circleType : protected shapeType
 {
     /*
@@ -60,7 +64,7 @@ public:
      */
     bool isConcentric(circleType &);
 
-    circleType(double r, pointType c);
+    circleType(double r = 0.0, pointType c = pointType(0, 0));
 
 private:
     double radius;
