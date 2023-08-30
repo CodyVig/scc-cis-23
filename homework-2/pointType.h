@@ -5,6 +5,9 @@
 #ifndef H_POINTTYPE
 #define H_POINTTYPE
 
+/**
+ * `pointType` object abstracts coordinates in R^2. Base class for `circleType`.
+ */
 class pointType
 {
 public:
@@ -15,7 +18,17 @@ public:
     double getX();
     double getY();
 
+    /**
+     * Calculates Euclidean distance to another `pointType`.
+     *
+     * @param `point`: A reference to another `pointType`.
+     * @return Double representing Euclidean distance.
+     */
     double distance(pointType &point);
+
+    /**
+     * Prints out coordinates in the form (x, y).
+     */
     void print() const;
 
     pointType(double a = 0.0, double b = 0.0);
