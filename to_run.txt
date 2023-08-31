@@ -1,3 +1,0 @@
-https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/Unix_Reference/command_gcc.html
-
-g++ -Wall -pedantic main.cpp -std=c++11 -o out
