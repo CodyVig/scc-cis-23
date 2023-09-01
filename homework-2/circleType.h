@@ -13,13 +13,13 @@ Subclass of `shapeType` which stores information about circles.
  * Child class of `shapeType` which encodes information about circles. Contains
  * a double `radius` and pointType `center`.
  */
-class circleType : protected shapeType
+class circleType : private shapeType
 {
     /*
-    We should inherit with protection. We want to call the getters and setters
-    of `shapeType` when writing our getters and setters, but we do not want
-    users accessing those methods. Instead, we want them to use our
-    `circleType` specific getters and setters.
+    We should inherit privately. We want to call the getters and setters of
+    `shapeType` when writing our getters and setters, but we do not want users
+    accessing those methods. Instead, we want them to use our `circleType`
+    specific getters and setters.
     */
 
 public:
@@ -28,7 +28,7 @@ public:
      *
      * @param c: `pointType` center of the circle.
      */
-    void setCenter(pointType c);
+    void setCenter(pointType &c);
 
     /**
      * Sets the radius of the circle.
@@ -42,7 +42,7 @@ public:
      *
      * @param c: `pointType` reference to where the center will be stored.
      */
-    void getCenter(pointType &c);
+    void getCenter(pointType &c) const;
 
     /**
      * Retrieves the radius of the circle.
@@ -59,11 +59,17 @@ public:
     /**
      * Whether or not `this` and `p` are concentric circles.
      *
-     * @param p: A reference to a second `circleType`.
+     * @param c: A reference to a second `circleType`.
      * @return `true` if concentric, `false` otherwise.
      */
-    bool isConcentric(circleType &);
+    bool isConcentric(circleType &c) const;
 
+    /**
+     * Overloaded constructor. Sets the circles radius and center.
+     *
+     * @param r: The radius of the circle.
+     * @param c: The `pointType` center of the circle.
+     */
     circleType(double r = 0.0, pointType c = pointType(0, 0));
 
 private:

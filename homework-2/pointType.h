@@ -15,16 +15,16 @@ public:
     void setX(double a = 0);
     void setY(double b = 0);
 
-    double getX();
-    double getY();
+    double getX() const;
+    double getY() const;
 
     /**
      * Calculates Euclidean distance to another `pointType`.
      *
-     * @param `point`: A reference to another `pointType`.
+     * @param `p`: A reference to another `pointType`.
      * @return Double representing Euclidean distance.
      */
-    double distance(pointType &point);
+    double distance(pointType &p) const;
 
     /**
      * Prints out coordinates in the form (x, y).
