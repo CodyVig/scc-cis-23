@@ -18,11 +18,11 @@ Answer:     Functionally, nothing would be different. Private and protected
 
 using namespace std;
 
-void circleType::setCenter(pointType c) { center = c; }
+void circleType::setCenter(pointType &c) { center = c; }
 
 void circleType::setRadius(double r) { radius = r; }
 
-void circleType::getCenter(pointType &c) { c = center; }
+void circleType::getCenter(pointType &c) const { c = center; }
 
 double circleType::getRadius() const { return radius; }
 
@@ -35,13 +35,15 @@ void circleType::print() const
     center.print();
 }
 
-bool circleType::isConcentric(circleType &p)
+bool circleType::isConcentric(circleType &p) const
 {
     return p.center.getX() == center.getX() && p.center.getY() == center.getY();
 }
 
 circleType::circleType(double r, pointType c)
 {
+    // Pass `c` by value instead of by reference because there is no need
+    // to instantiate the `pointType` center before instantiating the circle.
     setRadius(r);
     setCenter(c);
 

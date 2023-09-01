@@ -14,15 +14,15 @@ void pointType::setPoint(double a, double b)
 
 void pointType::setX(double a) { x = a; }
 
-double pointType::getX() { return x; }
+double pointType::getX() const { return x; }
 
 void pointType::setY(double b) { y = b; }
 
-double pointType::getY() { return y; }
+double pointType::getY() const { return y; }
 
-double pointType::distance(pointType &point)
+double pointType::distance(pointType &p) const
 {
-    return sqrt(pow(x - point.x, 2) + pow(y - point.y, 2));
+    return sqrt(pow(x - p.x, 2) + pow(y - p.y, 2));
 }
 
 void pointType::print() const { cout << "(" << x << ", " << y << ")" << endl; }
