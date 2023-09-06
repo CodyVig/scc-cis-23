@@ -36,7 +36,7 @@ As writtes, yes, `studentType` is a concrete class. It does not have virtual fun
 
 ## 2. How would you change the definition of the class student so that the functions print and calculateGPA are pure virtual functions?
 
-To make them virtual functions, we would need to add the `virtaul` modifier to their prototypes. To make them *pure* virtual functions, we need to remove all declarations of those functions and end those declarations with `= 0`:
+To make them virtual functions, we would need to add the `virtaul` modifier to their prototypes. To make them *pure* virtual functions, we need to remove all declarations of those functions and end their prototypes with `= 0`:
 ```cpp
 virtual void print() = 0;
 virtual void calculateGPA() = 0;
