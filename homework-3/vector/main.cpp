@@ -1,8 +1,18 @@
+/*****************************************************************************
+ * Author:       Cody Vig
+ * Assignment:   Homework 3
+ * Due Date:     September 13, 2023.
+ *****************************************************************************/
+
 #include "vectorType.h"
+
 #include <iostream>
 
 using namespace std;
 
+/**
+ * Tests dynamic arrays within `Vector` class.
+ */
 int main()
 {
     Vector v1(3);

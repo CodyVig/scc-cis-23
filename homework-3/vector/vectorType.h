@@ -1,13 +1,16 @@
 #ifndef VECTORTYPE_H_
 #define VECTORTYPE_H_
 
+/**
+ * Variable-size vectors stored using dynamic arrays.
+ */
 class Vector
 {
 public:
     /** Returns the size of the array. */
     int getSize();
 
-    /** Prompts the user to enter data into the array */
+    /** Prompts the user to enter data into the array. */
     void readData();
 
     /** Prints the array in a human-readable from. */
@@ -15,19 +18,36 @@ public:
 
     /** Deletes `size` and `data` and reinitializes the vector object to be of
      * size `n`.
+     *
+     * @param `n`: The new number of components of the `Vector` object.
      */
     void reshape(int n);
 
-    /** Overloads index retrieval */
+    /**
+     * Overloads index retrieval.
+     *
+     * @param `idx`: The index of the component we wish to retrieve.
+     * @return The element at index `idx`.
+     */
     double &operator[](int idx);
 
-    /** Overloads vector assignment via deep copy */
+    /**
+     * Overloads vector assignment via deep copy.
+     *
+     * @param `v`: Another `Vector` object.
+     * @return a deep copy of `v` at a distinct location in memory.
+     */
     Vector &operator=(Vector &v);
 
-    /** Sets the size of the array */
+    /**
+     * Sets the size of the array.
+     *
+     * @param `n`: The number of components of the `Vector` object (defaults to
+     * 0).
+     */
     Vector(int n = 0);
 
-    /** Destructor to prevent memory leaks with dynamic array */
+    /** Destructor to prevent memory leaks with dynamic array. */
     ~Vector();
 
 private:
