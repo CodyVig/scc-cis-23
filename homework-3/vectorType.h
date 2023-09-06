@@ -1,5 +1,5 @@
-#ifndef H_VECTOR
-#define H_VECTOR
+#ifndef VECTORTYPE_H_
+#define VECTORTYPE_H_
 
 class Vector
 {
@@ -13,16 +13,21 @@ public:
     /** Prints the array in a human-readable from. */
     void print();
 
+    /** Deletes `size` and `data` and reinitializes the vector object to be of
+     * size `n`.
+     */
+    void reshape(int n);
+
     /** Overloads index retrieval */
     double &operator[](int idx);
 
     /** Overloads vector assignment via deep copy */
-    Vector operator=(Vector &v);
+    Vector &operator=(Vector &v);
 
     /** Sets the size of the array */
     Vector(int n = 0);
 
-    /** To prevent memory leaks with dynamic array */
+    /** Destructor to prevent memory leaks with dynamic array */
     ~Vector();
 
 private:

@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "vectorType.h"
 #include <cassert>
 #include <iostream>
 
@@ -22,9 +22,16 @@ void Vector::print()
     cout << "(";
     for (int idx = 0; idx < size - 1; idx++)
     {
-        cout << data[idx] << ", ";
+        cout << this->data[idx] << ", ";
     }
-    cout << data[size - 1] << ")" << endl;
+    cout << this->data[size - 1] << ")" << endl;
+}
+
+void Vector::reshape(int n)
+{
+    delete[] data;
+    size = n;
+    data = new double[n];
 }
 
 double &Vector::operator[](int idx)
@@ -33,17 +40,19 @@ double &Vector::operator[](int idx)
     return data[idx];
 }
 
-Vector Vector::operator=(Vector &v)
+Vector &Vector::operator=(Vector &v)
 {
-    // Method prototype was `Vector &Vector::operator=(Vector &v)`, but
-    // we cannot return a reference to a local variable because local
-    // variables are destroyed after the return value.
-    Vector returnVector(v.getSize());
+    if (this == &v) { return *this; }
+
+    // Reallocate memory for vector of correct size
+    this->reshape(v.getSize());
+
     for (int idx = 0; idx < size; idx++)
     {
-        returnVector[idx] = v[idx];
+        data[idx] = v[idx];
     }
-    return returnVector;
+
+    return *this;
 }
 
 Vector::Vector(int n)

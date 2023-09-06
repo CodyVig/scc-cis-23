@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "vectorType.h"
 #include <iostream>
 
 using namespace std;
@@ -12,14 +12,19 @@ int main()
     cout << "v1 = ";
     v1.print();
 
-    cout << "Deep copying v1 into v2...\n";
+    cout << "\nDeep copying v1 into v2...\n";
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     v2 = v1;
     cout << "v1 = ";
     v1.print();
     cout << "v2 = ";
     v2.print();
 
-    cout << "Changing components of v1...\n";
+    // Showing that v2 is a deep copy and not a shallow one.
+    cout << "\nChanging components of v1...\n";
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    v1[0] = 3.14;
+    v1[1] = 1.414;
     v1[2] = 1729;
     cout << "v1 = ";
     v1.print();
