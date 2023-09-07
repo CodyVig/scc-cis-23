@@ -16,13 +16,6 @@ public:
     /** Prints the array in a human-readable from. */
     void print();
 
-    /** Deletes `size` and `data` and reinitializes the vector object to be of
-     * size `n`.
-     *
-     * @param `n`: The new number of components of the `Vector` object.
-     */
-    void reshape(int n);
-
     /**
      * Overloads index retrieval.
      *
@@ -51,6 +44,14 @@ public:
     ~Vector();
 
 private:
+    /**
+     * Deletes `size` and `data` and reinitializes the vector object to be of
+     * size `n`. Helper function for assignment `=` overload.
+     *
+     * @param `n`: The new number of components of the `Vector` object.
+     */
+    void reshape(int n);
+
     int size;
     double *data;
 };

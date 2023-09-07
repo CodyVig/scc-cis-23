@@ -22,16 +22,9 @@ void Vector::print()
     cout << "(";
     for (int idx = 0; idx < size - 1; idx++)
     {
-        cout << this->data[idx] << ", ";
+        cout << data[idx] << ", ";
     }
-    cout << this->data[size - 1] << ")" << endl;
-}
-
-void Vector::reshape(int n)
-{
-    delete[] data;
-    size = n;
-    data = new double[n];
+    cout << data[size - 1] << ")" << endl;
 }
 
 double &Vector::operator[](int idx)
@@ -45,7 +38,7 @@ Vector &Vector::operator=(Vector &v)
     if (this == &v) { return *this; }
 
     // Reallocate memory for vector of correct size
-    this->reshape(v.getSize());
+    reshape(v.getSize());
 
     for (int idx = 0; idx < size; idx++)
     {
@@ -67,4 +60,11 @@ Vector::~Vector()
     // heap and is therefore not deleted automatically when the object goes
     // out of scope. Here we delete manually to prevent memory leaks.
     delete[] data;
+}
+
+void Vector::reshape(int n)
+{
+    delete[] data;
+    size = n;
+    data = new double[n];
 }
