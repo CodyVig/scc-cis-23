@@ -29,11 +29,10 @@ void orderedArrayListType::insertEnd(int insertItem)
     {
         throw domain_error("Array is already at max capactiy. Insert failed.");
     }
-    list[length] = insertItem;
-    length++; // Can I just call `list[length++] = insertItem`?
+    list[length++] = insertItem;
 }
 
-void orderedArrayListType::replaceAt(int location, int repItem) // WHY??
+void orderedArrayListType::replaceAt(int location, int repItem)
 {
     if (location < 0 || location >= length)
     {
@@ -41,7 +40,12 @@ void orderedArrayListType::replaceAt(int location, int repItem) // WHY??
             "The position of the item to be replaced is out of range."
         );
     }
-    list[location] = repItem; // This does not preserve order.
+    // We cannot insert the item at `location` if we want to preserve order.
+    while (seqSearch(list[location]) != -1)
+    {
+        remove(list[location]);
+        insert(repItem);
+    }
 }
 
 int orderedArrayListType::seqSearch(int searchItem) const
@@ -56,13 +60,19 @@ int orderedArrayListType::seqSearch(int searchItem) const
         else { loc++; }
     }
 
-    if (found) { return loc; }
-    else { return -1; }
+    return found ? loc : -1;
+    // if (found) { return loc; }
+    // else { return -1; }
 }
 
 void orderedArrayListType::insert(int insertItem)
 {
-    if (length == 0) { list[length++] = insertItem; }
+    if (length == 0)
+    {
+        list[length] = insertItem;
+        length++;
+        return;
+    }
     if (length == maxSize)
     {
         throw domain_error("Cannot insert into a full list.");
@@ -77,6 +87,7 @@ void orderedArrayListType::insert(int insertItem)
         {
             found = true;
             insertAt(loc, insertItem);
+            return;
         }
     }
     if (!found) { insertEnd(insertItem); }
@@ -84,22 +95,30 @@ void orderedArrayListType::insert(int insertItem)
 
 void orderedArrayListType::remove(int removeItem)
 {
-    int loc;
-
     if (length == 0)
     {
         throw domain_error("Cannot delete from an empty list.");
     }
     else
     {
-        loc = seqSearch(removeItem); // Does not remove all occurances.
+        bool removed = false;
+        for (int idx = 0; idx < length; idx++)
+        {
+            if (list[idx] == removeItem)
+            {
+                removeAt(idx);
+                removed = true;
+                idx--;
+            }
+            else if (list[idx] > removeItem) { break; }
+        }
 
-        if (loc != -1) { removeAt(loc); }
-        else
+        if (!removed)
         {
             throw out_of_range("The item to be deleted is not in the list.");
         }
+        return;
     }
 }
 
-orderedArrayListType::orderedArrayListType(int size) {}
+orderedArrayListType::orderedArrayListType(int size) { maxSize = size; }
