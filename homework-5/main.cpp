@@ -46,7 +46,7 @@ int main()
     v2.print();
 
     // Double vectors:
-    cout << "Testing `Vector<double>`...\n";
+    cout << "\nTesting `Vector<double>`...\n";
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     Vector<double> v3(3);
