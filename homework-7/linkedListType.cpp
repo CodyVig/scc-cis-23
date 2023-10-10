@@ -7,18 +7,15 @@ void linkedListType::clearList()
 {
     if (count == 0) { return; }
 
-    nodeType *current = head;
-    nodeType *previous = head;
-    int position = 0;
+    nodeType *tmp;
 
-    while (position < count)
+    while (head != NULL)
     {
-        previous = current;
-        delete previous;
-        current = current->link;
-        position++;
+        tmp = head;
+        head = head->link;
+        delete tmp;
     }
-    delete current;
+    count = 0;
     head = NULL;
     tail = NULL;
 }
@@ -33,26 +30,45 @@ void linkedListType::insert(int n)
     {
         head = newNode;
         tail = newNode;
+        count++;
+        return;
     }
-    else
+
+    // First make sure `n` is not already in the list
+    int idx = findData(n);
+    if (idx != -1)
     {
-        tail->link = newNode; // Make the old tail node point to the new node.
-        tail = tail->link;    // Make this new node the tail node.
-        // Could this also be tail = newNode?
+        cout << "Error: Element " << n << " is already in the list at index "
+             << idx << ". Duplicate elements are not allowed." << endl;
+        return;
     }
+
+    // Otherwise, insert the element.
+    tail->link = newNode; // Make the old tail node point to the new node.
+    tail = tail->link;    // Make this new node the tail node.
+    // Could this also be tail = newNode?
+
     count++;
 }
 
 void linkedListType::insertNodeAt(int n, int idx)
 {
+    if (idx > count)
+    {
+        cout << "Cannot insert data at index " << idx
+             << ". Inserting at the end of the list" << endl;
+        insert(n);
+        return;
+    }
+
     nodeType *newNode = new nodeType;
     newNode->info = n;
     newNode->link = NULL;
 
     if (idx == 0)
     {
+        newNode->link = head;
         head = newNode;
-        tail = newNode;
         count++;
         return;
     }
@@ -61,7 +77,7 @@ void linkedListType::insertNodeAt(int n, int idx)
     nodeType *previous = head;
     int position = 0;
 
-    while (position <= idx)
+    while (position < idx)
     {
         previous = current;
         current = current->link;
@@ -75,6 +91,8 @@ void linkedListType::insertNodeAt(int n, int idx)
 
 int linkedListType::findData(int n)
 {
+    if (count == 0) { return -1; }
+
     nodeType *current = head;
     int position = 0;
 
@@ -99,6 +117,13 @@ void linkedListType::deleteNodeAt(int idx)
     nodeType *previous = head;
     int position = 0;
 
+    if (idx == 0)
+    {
+        head = head->link;
+        delete previous;
+        return;
+    }
+
     while (position < idx)
     {
         previous = current;
@@ -114,17 +139,31 @@ void linkedListType::deleteNodeAt(int idx)
 void linkedListType::print() const
 {
     nodeType *current = head;
-    int position = 0;
 
     cout << "[ ";
-    while (position < count)
+    while (current != NULL)
     {
         cout << current->info << " ";
         current = current->link;
-        position++;
     }
     cout << "]" << endl;
 }
+
+int linkedListType::sum() const
+{
+    nodeType *current = head;
+    int totalSum = 0;
+
+    while (current != NULL)
+    {
+        totalSum += current->info;
+        current = current->link;
+    }
+
+    return totalSum;
+}
+
+int linkedListType::getLength() const { return count; }
 
 linkedListType::linkedListType()
 {
@@ -133,9 +172,4 @@ linkedListType::linkedListType()
     count = 0;
 }
 
-linkedListType::~linkedListType()
-{
-    clearList();
-    delete head;
-    delete tail;
-}
+linkedListType::~linkedListType() { clearList(); }
