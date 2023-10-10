@@ -36,6 +36,7 @@ This is **true**, since `list` is a pointer that points to the first node and `p
 
 ---
 
+\pagebreak
 # Problem 2
 
 *(10 points)* What are the effects, if any, of each of the following C++ statements?
@@ -55,21 +56,24 @@ This changes the data stored in the first node from `47` to `58`. It leaves the 
 
 ---
 
+\pagebreak
 # Problem 3
 
 *(15 points)* Write a C++ statement to perform the following:
 
-* Advance first to point to the next node.
-* Make tail point to the node before current.
+* Advance `first` to point to the next node.
+* Make `trail` point to the node before `current`.
 * Make `p` point to an empty list.
 
 ## Solution
 
-### 1. Advance first to point to the next node. 
+### 1. Advance `first` to point to the next node. 
 
 `first = first->link;`
 
-### 2. Make trail point to the node before current.
+### 2. Make `trail` point to the node before `current`.
+
+The following code block will make `trail` point to the node just before `current` from first principles:
 
 ```cpp
 nodeType tempNode = head;
@@ -83,8 +87,10 @@ while (tempNode->link != current)
 trail = tempNode;
 ```
 
+Alternatively, we could write `trail = p->link;`, since `p` is currently set to be two nodes before `current`.
+
 ### 3. Make `p` point to an empty list.
 
-
+`p = NULL;`
 
 ---
