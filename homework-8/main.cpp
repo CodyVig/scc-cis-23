@@ -1,16 +1,17 @@
 /* Tests if an input string is a palindrome. */
 
+#include "queues/linkedQueue.h"
+#include "queues/listQueue.h" // #include "queueAsArray.h"
+#include "stacks/listStack.h" // #include "myStack.h"
 #include <iostream>
 #include <string>
-// #include "myStack.h"
-// #include "queueAsArray.h"
 
 using namespace std;
 
 int main()
 {
-    // queueType<char> queue(200);
-    // stackType<char> stack(200);
+    listQueue<char> queue(200);
+    listStack<char> stack(200);
 
     string sentence;
 
@@ -49,12 +50,12 @@ int main()
 /**
  * Uses a queue to reverse a stack in-place.
  *
- * @param `s`: An integer `stackType` object to be reversed.
+ * @param `s`: An integer `listStack` object to be reversed.
  * @return The same stack object with its elements reversed.
  */
 template <class Type> void reverseStack()
 {
-    // linkedQueueType<Type> q;
+    linkedQueue<Type> q;
     Type elem;
 
     /* your code here */

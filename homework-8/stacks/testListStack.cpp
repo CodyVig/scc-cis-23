@@ -1,13 +1,13 @@
 /* Program to test various operations of a stack. */
 
-#include "stackType.h"
+#include "listStack.h"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    stackType<int> stack(4);
+    listStack<int> stack(4);
 
     stack.push(10);
     stack.push(100);

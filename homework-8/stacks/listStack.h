@@ -1,17 +1,17 @@
-#ifndef STACKTYPE_H_
-#define STACKTYPE_H_
+#ifndef STACKS_LISTSTACK_H_
+#define STACKS_LISTSTACK_H_
 
-#include "../stackADT.h" // In parent directory
+#include "stackADT.h"
 
 #include <cassert>
 #include <iostream>
 
 using namespace std;
 
-template <class Type> class stackType : public stackADT<Type>
+template <class Type> class listStack : public stackADT<Type>
 {
 public:
-    const stackType<Type> &operator=(const stackType<Type> &);
+    const listStack<Type> &operator=(const listStack<Type> &);
 
     /** Initialize the stack to an empty state. */
     void initializeStack();
@@ -31,48 +31,48 @@ public:
     /** Removes the last element from the stack. */
     void pop();
 
-    stackType(int stackSize = 100);
+    listStack(int stackSize = 100);
 
     /**
      * Copy constructor is called when stack object is passed as a value
      * parameter to a function.
      */
-    stackType(const stackType<Type> &otherStack);
+    listStack(const listStack<Type> &otherStack);
 
-    ~stackType();
+    ~listStack();
 
 private:
     int maxStackSize;
     int stackTop; // Index of the top of the stack.
     Type *list;
-    void copyStack(const stackType<Type> &otherStack);
+    void copyStack(const listStack<Type> &otherStack);
 };
 
 template <class Type>
-const stackType<Type> &
-stackType<Type>::operator=(const stackType<Type> &otherStack)
+const listStack<Type> &
+listStack<Type>::operator=(const listStack<Type> &otherStack)
 {
     copyStack(otherStack);
 }
 
-template <class Type> void stackType<Type>::initializeStack()
+template <class Type> void listStack<Type>::initializeStack()
 {
     delete[] list;
     list = new Type[maxStackSize];
     stackTop = 0;
 }
 
-template <class Type> bool stackType<Type>::isEmptyStack() const
+template <class Type> bool listStack<Type>::isEmptyStack() const
 {
     return stackTop == 0;
 }
 
-template <class Type> bool stackType<Type>::isFullStack() const
+template <class Type> bool listStack<Type>::isFullStack() const
 {
     return stackTop == maxStackSize;
 }
 
-template <class Type> void stackType<Type>::push(const Type &newItem)
+template <class Type> void listStack<Type>::push(const Type &newItem)
 {
     if (!isFullStack())
     {
@@ -85,15 +85,15 @@ template <class Type> void stackType<Type>::push(const Type &newItem)
     }
 }
 
-template <class Type> Type stackType<Type>::top() const
+template <class Type> Type listStack<Type>::top() const
 {
     assert(stackTop != 0);
     return list[stackTop - 1];
 }
 
-template <class Type> void stackType<Type>::pop() { stackTop--; }
+template <class Type> void listStack<Type>::pop() { stackTop--; }
 
-template <class Type> stackType<Type>::stackType(int stackSize)
+template <class Type> listStack<Type>::listStack(int stackSize)
 {
     if (stackSize <= 0)
     {
@@ -108,16 +108,16 @@ template <class Type> stackType<Type>::stackType(int stackSize)
 }
 
 template <class Type>
-stackType<Type>::stackType(const stackType<Type> &otherStack)
+listStack<Type>::listStack(const listStack<Type> &otherStack)
 {
     list = nullptr;
     copyStack(otherStack);
 }
 
-template <class Type> stackType<Type>::~stackType() { delete[] list; }
+template <class Type> listStack<Type>::~listStack() { delete[] list; }
 
 template <class Type>
-void stackType<Type>::copyStack(const stackType<Type> &otherStack)
+void listStack<Type>::copyStack(const listStack<Type> &otherStack)
 {
     delete[] list;
 

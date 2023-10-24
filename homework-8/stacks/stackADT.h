@@ -1,5 +1,5 @@
-#ifndef _STACKADT_H_
-#define _STACKADT_H_
+#ifndef STACKS_STACKADT_H_
+#define STACKS_STACKADT_H_
 
 #include <iostream>
 
