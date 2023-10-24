@@ -78,7 +78,7 @@ template <class Type> Type listQueue<Type>::back() const
 {
     assert(!isEmptyQueue());
     return list[queueRear];
-} // end back
+}
 
 template <class Type> void listQueue<Type>::addQueue(const Type &newElement)
 {
