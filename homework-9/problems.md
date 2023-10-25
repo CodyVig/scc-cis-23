@@ -31,6 +31,10 @@ ___
 
 ## Solution
 
+**Definition.** Suppose $f, g: \mathbb{N} \to \mathbb{R}$. We say $f \in \mathcal{O}(g)$ if $\limsup_{n \to \infty} \left| \frac{f(n)}{g(n)} \right|$ is finite.
+
+**Theorem.** Suppose $f: \mathbb{N} \to \mathbb{R}$. If $\lim_{n \to \infty} f(n)$ exists, then $\limsup_{n \to \infty} f(n) = \liminf_{n \to \infty} f(n) = \lim_{n \to \infty} f(n)$ 
+
 **Part a)** Note $n^3 - 8n = n^3\left(1 - \frac{8}{n^2} \right) \sim n^3$ as $n \to \infty$, so I claim $n^3 - 8n \in \mathcal{O}(n^3)$.
 
 *Proof.* Define $f(n) := n^3 - 8n$ and $g(n) := n^3$ as integer-valued functions. Let $\varepsilon > 0$ and $N > 0$ satisfy $N^2 \geq \frac{8}{\varepsilon}$. Then for $n \geq N$ we have 
@@ -41,11 +45,11 @@ Hence $\lim_{n \to \infty} \frac{f(x)}{g(x)} = 1$ and so $f \in \mathcal{O}(g)$.
 
 **Part b)** Note $5n^4 + 2n^2 + 8 = n^4\left( 5 + \frac{2}{n^2} + \frac{8}{n^4} \right) \sim 5n^4$ as $n \to \infty$, so I claim $5n^4 + 2n^2 + 8 \in \mathcal{O}(n^4)$.
 
-*Proof.* Define $f(n) := 5n^4 + 2n^2 + 8$ and $g(n) := n^4$ as integer-valued functions. Let $\varepsilon > 0$ and $N > 0$ satisfy $N^2 \geq \frac{8}{\varepsilon}$. Then for $n \geq N$ we have 
+*Proof.* Define $f(n) := 5n^4 + 2n^2 + 8$ and $g(n) := n^4$ as integer-valued functions. Let $\varepsilon > 0$ and $N > 0$ satisfy $N^2 \geq \frac{10}{\varepsilon}$. Then for $n \geq N$ we have 
 $$
-\left|\frac{f(x)}{g(x)} - 5\right| \leq \frac{2}{n^2} + \frac{8}{n^4} \leq \frac{2}{n^2} + \frac{8}{n^2} = \frac{10}{n^2} \leq \frac{8}{N^2} \leq \varepsilon.
+\left|\frac{f(x)}{g(x)} - 5\right| \leq \frac{2}{n^2} + \frac{8}{n^4} \leq \frac{2}{n^2} + \frac{8}{n^2} = \frac{10}{n^2} \leq \frac{10}{N^2} \leq \varepsilon.
 $$
-Hence $\lim_{n \to \infty} \frac{f(x)}{g(x)} = 1$ and so $f \in \mathcal{O}(g)$.
+Hence $\lim_{n \to \infty} \frac{f(x)}{g(x)} = 5$ and so $f \in \mathcal{O}(g)$.
 
 ___
 
