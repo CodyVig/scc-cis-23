@@ -105,14 +105,12 @@ template <class Type> listQueue<Type>::listQueue(int queueSize)
 {
     if (queueSize <= 0)
     {
-        cout << "Size of the array to hold the queue must "
-             << "be positive." << endl;
+        cout << "Size of the array to hold the queue must be positive." << endl;
         cout << "Creating an array of size 100." << endl;
 
         maxQueueSize = 100;
     }
-    else
-        maxQueueSize = queueSize;
+    else { maxQueueSize = queueSize; }
 
     queueFront = 0;
     queueRear = maxQueueSize - 1;

@@ -51,6 +51,7 @@ public:
 private:
     nodeType<Type> *queueFront;
     nodeType<Type> *queueRear;
+    void copyQueue(const linkedQueue<Type> &otherQueue);
 };
 
 template <class Type> linkedQueue<Type>::linkedQueue()
@@ -133,17 +134,28 @@ template <class Type> void linkedQueue<Type>::deleteQueue()
         cout << "Cannot remove from an empty queue" << endl;
 }
 
-template <class Type> linkedQueue<Type>::~linkedQueue() {}
+template <class Type> linkedQueue<Type>::~linkedQueue() { initializeQueue(); }
 
 template <class Type>
 const linkedQueue<Type> &
 linkedQueue<Type>::operator=(const linkedQueue<Type> &otherQueue)
 {
+    if (this != &otherQueue) { copyQueue(otherQueue); }
+    return *this;
 }
 
 template <class Type>
 linkedQueue<Type>::linkedQueue(const linkedQueue<Type> &otherQueue)
 {
+    queueFront = nullptr;
+    queueRear = nullptr;
+    copyQueue(otherQueue);
+}
+
+template <class Type>
+void linkedQueue<Type>::copyQueue(const linkedQueue<Type> &otherQueue)
+{
+    // Needs to be implemented
 }
 
 #endif
