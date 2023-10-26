@@ -5,8 +5,8 @@
  *****************************************************************************/
 
 #include "queues/linkedQueue.h" // For problem 2
-#include "queues/listQueue.h"   // #include "queueAsArray.h"
-#include "stacks/listStack.h"   // #include "myStack.h"
+#include "queues/listQueue.h"   // My `#include "queueAsArray.h"`
+#include "stacks/listStack.h"   // My `#include "myStack.h"`
 #include <iostream>
 #include <string>
 
@@ -25,7 +25,7 @@ template <class Type> void reverseStack(listStack<Type> &s);
 int main(int argc, char **argv)
 {
     // If `2` is passed, run problem 2.
-    if (argc > 1 && atof(argv[1]) == 2)
+    if (argc == 2 && atof(argv[1]) == 2)
     {
         listStack<int> stack(10);
 
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
     }
 
     // If `3` is passed or if nothing is passed, run problem 3.
-    if ((argc > 1 && atof(argv[1]) == 3) || argc == 1)
+    if ((argc == 2 && atof(argv[1]) == 3) || argc == 1)
     {
         listQueue<char> queue(200);
         listStack<char> stack(200);
