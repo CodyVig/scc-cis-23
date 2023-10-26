@@ -1,56 +1,42 @@
-/*****************************************************************************
- * Author:       Cody Vig
- * Assignment:   Homework 9
- * Due Date:     November 2, 2023.
- *****************************************************************************/
-
-// #include "binarySearch.h"
 #include <iostream>
 
 using namespace std;
 
+/**
+ * Returns the index of `item` in list `list`, if it exists, using a binary
+ * search. If `item` is not present in the list, returns -1.
+ *
+ * @param `list`: The sorted array of interest.
+ * @param `length`: The length of the array.
+ * @param `item`: A reference to the item for which we are searching.
+ * @return The index of `item` in `list`, or `-1` if not in `list`.
+ */
 template <class Type>
-int doRecursiveSearch(const Type[], const Type &, int, int);
-
-template <class Type>
-int recursiveBinarySearch(const Type[], int, const Type &);
-
-/** Test recursive implementation of binary search. */
-int main()
+int binarySearch(const Type list[], int length, const Type &item)
 {
-    int sortedList[] = {1, 1, 2, 3, 5, 8};
-    int n = 6;
-    int element, idx;
+    int first = 0;
+    int last = length - 1;
+    int middle;
+    bool found = false;
 
-    cout << "The array in question is: [ ";
-    for (int i = 0; i < n; i++)
+    while (first <= last && !found)
     {
-        cout << sortedList[i] << " ";
-    }
-    cout << "]" << endl;
+        middle = (first + last) / 2;
 
-    cout << "Enter the element you would like to search for: ";
-    cin >> element;
-
-    idx = recursiveBinarySearch<int>(sortedList, n, element);
-
-    if (idx == -1)
-    {
-        cout << "Element `" << element << "` is not in the list." << endl;
-    }
-    else
-    {
-        cout << "The index of element `" << element << "` in the list is "
-             << idx << "." << endl;
+        if (list[middle] == item) { found = true; }
+        else if (list[middle] > item) { last = middle - 1; }
+        else { first = middle + 1; }
     }
 
-    return 0;
+    if (found) { return middle; }
+    else { return -1; }
 }
 
 /** Helper function for `recursiveBinarySearch()` */
 template <class Type>
 int doRecursiveSearch(const Type list[], const Type &item, int first, int last)
 {
+    cout << "First = " << first << ", Last = " << last << endl;
     if (first > last) { return -1; }
 
     int middle = (first + last) / 2;
