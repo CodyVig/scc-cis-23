@@ -1,10 +1,11 @@
 ---
-title: "Computer Information Systems 23 - Homework 7"
+title: "CIS 23: Data Structures and Algorithms"
+subtitle: |
+    | Homework 7
+    | Prof. Sana Vaziri
 author: Cody Vig
-output:
-  pdf_document:
-    toc: yes
-    toc_depth: 3
+output: pdf_document
+geometry: margin=1in
 ---
 
 Use the following figure to answer the questions below.

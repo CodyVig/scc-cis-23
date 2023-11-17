@@ -1,10 +1,11 @@
 ---
-title: "Computer Information Systems 23 - Homework 3"
-author:  Cody Vig # Name and Email
-output:
-  pdf_document:
-    toc: yes
-    toc_depth: 3
+title: "CIS 23: Data Structures and Algorithms"
+subtitle: |
+    | Homework 3 
+    | Prof. Sana Vaziri
+author: Cody Vig
+output: pdf_document
+geometry: margin=1in
 ---
 
 # Problem 1
