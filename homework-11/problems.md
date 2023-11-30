@@ -27,25 +27,41 @@ Consider the following binary search tree
 
 ### Problem 1 Part 1.
 
-In an *inorder* traversal of a tree $T$, we first visit the left subtree $L(T)$, then we visit the root node $N_T$, and then we visit the right subtree $R(T)$. For this tree, the sequence of nodes we visit will be:
-$$20, 35, 40, 45, 50, 60, 63, 65, 68, 70, 72, 75, 78, 80, 82, 85, 88, 92, 94, 96, 98.$$
+In an *inorder* traversal of a tree $T$, we first visit the left subtree $L(T)$, then we visit the root node $N(T)$, and then we visit the right subtree $R(T)$. For this tree, the sequence of nodes we visit will be:
+$$
+    20, 35, 40, 45, 50, 60, 63, 65, 68, 70, 72, 75, 78, 80, 82, 85, 88, 92, 94, 96, 98.
+$$
+Incidentally, this also lists the nodes in ascending order, since this is a binary search tree.
 
+In a *preorder* traversal of a tree $T$, we first visit the root node $N(T)$, then the left subtree $L(T)$, and finally the right subtree $R(T)$. For this tree, the sequence of nodes we visit will be:
+$$
+    70, 60, 50, 40, 20, 35, 45, 63, 68, 65, 92, 82, 72, 75, 80, 78, 88, 85, 94, 98, 96.
+$$
+
+In a *postorder* traversal of a tree $T$, we first visit the left subtree $L(T)$, then the right subtree $R(T)$, and finally the root node $N(T)$. For this tree, the sequence of nodes we visit will be:
+$$
+    35, 20, 45, 40, 50, 65, 68, 63, 60, 78, 80, 75, 72, 85, 88, 82, 96, 98, 94, 92, 70.
+$$
 
 ### Problem 1 Part 2.
 
-Suspendisse feugiat augue id libero dictum, in accumsan ipsum feugiat. Sed pharetra diam ac elit condimentum, vitae iaculis elit iaculis. Curabitur auctor metus ac eros scelerisque, a hendrerit turpis porttitor. Curabitur efficitur eleifend mauris, et cursus sapien. Maecenas mi sapien, aliquet non lectus eu, facilisis blandit dui. Aliquam erat volutpat. In consequat, turpis vel malesuada egestas, augue sapien semper urna, pharetra euismod augue mauris sit amet turpis.
+Recall that the height of a binary tree is the length of the longest path within that tree to a leaf. Since the longest path from 60 to a leaf (35) is 4, \red{the height of the tree with root 60 is 4}.
+
+Recall that the level of a node is the length of the path from the root node to the node in question. The unique path from the root to the node with info 75 is: $70 \to 92 \to 82 \to 72 \to 75$, so \red{the level of this node is 4}.
 
 ### Problem 1 Part 3.
 
-Nullam vitae lacus sem. Maecenas ut lacus tempor, congue leo at, eleifend leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque semper quam pretium, dictum ex eget, bibendum lacus. Pellentesque consectetur enim viverra, bibendum lectus vitae, dictum lorem. Nullam hendrerit aliquam condimentum. Aliquam iaculis elit at massa sodales faucibus. Nulla rhoncus massa sit amet viverra venenatis. Quisque vel pharetra diam, at pulvinar quam. Vivamus hendrerit lacus diam, ut commodo erat laoreet id. Cras rhoncus mauris a lectus mollis feugiat. Donec sed sapien sit amet metus hendrerit vehicula quis id arcu. Donec eget urna elementum, luctus ligula ac, placerat ante. Donec mauris sem, vehicula nec magna at, sodales vehicula metus. Proin dui purus, pellentesque ac bibendum sit amet, bibendum sed augue. Pellentesque sed imperdiet magna.
+The path from the node with info 92 to the node with info 78 is $92 \to 82 \to 72 \to 75 \to 80 \to 78$.
 
 ### Problem 1 Part 4.
 
-Aenean accumsan dolor vel tempus vehicula. Pellentesque hendrerit nisi eget justo finibus accumsan. Vestibulum imperdiet magna a placerat commodo. Fusce non vehicula orci. Cras sollicitudin nisl vel lectus suscipit, in pulvinar dolor eleifend. Cras ut tellus mattis, venenatis est nec, pulvinar neque. Curabitur commodo mi ultricies tempor rhoncus. Aenean convallis ultricies hendrerit. Praesent dapibus sit amet augue in eleifend. Nam in pulvinar felis. Suspendisse turpis justo, accumsan id volutpat quis, laoreet vitae felis. Maecenas et eros turpis. Donec consectetur turpis quis diam vestibulum, vel sagittis magna rutrum. Etiam porta elit nec arcu mollis, a sagittis elit pretium. Ut massa tellus, elementum sed interdum a, elementum eu tellus.
+![Solution to 1.4](solution4.png)
 
 ### Problem 1 Part 5.
 
-Integer sit amet nisl et lacus lobortis semper. Nullam laoreet orci vestibulum sem malesuada, vel sagittis ante interdum. Nam fringilla odio nec risus euismod finibus ut id purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus fermentum augue, sed eleifend diam consequat vitae. Fusce pulvinar turpis eu facilisis luctus. In elit felis, lobortis eget sagittis in, convallis non lectus. Ut ornare, nisi ac suscipit semper, erat neque malesuada diam, quis vulputate arcu risus nec mi. Nam eu massa blandit, sagittis nisi ac, pharetra sapien. Curabitur dignissim nisi eleifend ligula congue suscipit at eu libero. 
+The node with info 60 has two subtrees, so using the algorithm discussed in class, we first swap the node with info 60 with the right-most node in the left subtree (which is the node with info 45). We then delete the node with info 60, which is equivalent to forcing its parent node (with info 40) to point to `nullptr`. The tree is shown below.
+
+![Solution to 1.5](solution5.png)
 
 ---
 
@@ -83,6 +99,27 @@ while (current is not null or stack is nonempty)
 }
 ```
 
+In what follows, \red{red text} will denote data that has been **popped from the stack**. Then, the sequence of stacks will be:
+\begin{align*}
+    \text{stack} &= \{ a \} \\
+    \text{stack} &= \{ a, b \} \\
+    \text{stack} &= \{ a, b, d \} \\
+    \text{stack} &= \{ a, b, \red{d} \} \\
+    \text{stack} &= \{ a, b, \red{d}, g \} \\
+    \text{stack} &= \{ a, b, \red{d}, \red{g} \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g} \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, e \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e} \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, c \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, \red{c} \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f, h \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f, \red{h} \} \\
+    \text{stack} &= \{ a, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, \red{f}, \red{h} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, \red{f}, \red{h} \}.
+\end{align*}
+
+
 ### Problem 2 Part 2.
 
 Pseudocode for the nonrecursive preroder traversal is shown:
@@ -106,6 +143,26 @@ while (current is not null or stack is nonempty)
 }
 ```
 
+Again, in what follows, \red{red text} will denote data that has been **popped from the stack**. Then, the sequence of stacks will be:
+\begin{align*}
+    \text{stack} &= \{ a \} \\
+    \text{stack} &= \{ a, b \} \\
+    \text{stack} &= \{ a, b, d \} \\
+    \text{stack} &= \{ a, b, \red{d} \} \\
+    \text{stack} &= \{ a, b, \red{d}, g \} \\
+    \text{stack} &= \{ a, b, \red{d}, \red{g} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, e \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, c \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f, h \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, f, \red{h} \} \\
+    \text{stack} &= \{ \red{a}, \red{b}, \red{d}, \red{g}, \red{e}, \red{c}, \red{f}, \red{h} \}.
+\end{align*}
+Functionally, the only difference between the sequence of stacks in this traversal and that of the inorder traversal is that nodes are visited *before* they are popped off of the stack in a preorder traversal, whereas they are visted *as* they are popped in an inroder traversal.
+
 ---
 
 # Problem 3
@@ -120,7 +177,18 @@ The `nodeCount()` function in binaryTreeType is to count the number of nodes in 
 
 ### Problem 3 Part 1.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel placerat quam. Nulla vel eleifend sapien. Curabitur id neque eu elit ultrices varius. Morbi eu ligula tincidunt, feugiat nibh eu, blandit ex. Aliquam aliquet ligula sed augue pharetra pharetra. Curabitur consequat elementum tortor, in iaculis justo tincidunt a. Fusce nec metus lorem. Sed auctor felis ut nisl varius, id porttitor libero interdum.
+A *node* is a `nodeType` object which is not null. If a node `p` is not null, then we can add it to the sum of the nodes. In general, the nodes of any tree $T$ can be categorized into the root node, the nodes in the left subtree $L(T)$, and the nodes in the right subtree $R(T)$. Hence the number of nodes $N(T)$ in tree $T$ is 
+$$
+    N(T) = 1 + N(L(T)) + N(R(T)).
+$$
+Hence the recursive implementation is as follows:
+```cpp
+template <class elemType> nodeCount(nodeType<elemType> *p)
+{
+    if (p == nullptr) { return 0; }
+    return 1 + nodeCount(p->lLink) + nodeCount(p->rLink);
+}
+```
 
 ### Problem 3 Part 2.
 
@@ -128,7 +196,7 @@ See binaryTree.h
 
 ### Problem 3 Part 3.
 
-Morbi vestibulum gravida tempor. Praesent in vulputate nisl. Maecenas efficitur ante ac eros aliquam condimentum. Sed ac ultricies magna. Mauris id tincidunt sem. Cras blandit orci a lorem malesuada, non sollicitudin dolor interdum. Donec volutpat condimentum ligula, eget ultricies erat imperdiet eget. Curabitur feugiat ullamcorper laoreet. Maecenas mollis commodo nulla, a tincidunt libero sollicitudin ac. Phasellus mattis nunc ac tortor condimentum imperdiet nec id neque. Nullam venenatis tincidunt nulla, in cursus augue. Nulla a pretium nulla, sed tincidunt nulla. Nulla facilisis purus eget magna rutrum, non vestibulum lorem condimentum. Proin fermentum at leo vel ultricies. Quisque ut mollis justo. 
+This algorithm visits every node in the binary tree, so it is $\mathcal{O}(n)$ in time complexity.
 
 ---
 
@@ -144,7 +212,15 @@ The `leavesCount()` function in binaryTreeType is to count the number of leaves 
 
 ### Problem 4 Part 1.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat dui ut vulputate condimentum. Pellentesque sit amet velit eget diam mattis rhoncus vitae semper ex. Suspendisse pulvinar orci in pharetra sodales. Vivamus libero arcu, pellentesque eu nunc id, bibendum facilisis magna. Aenean sit amet orci feugiat, maximus elit id, gravida lacus. Fusce pulvinar ac diam quis feugiat. Sed sit amet vehicula tellus, a auctor lectus. Nam diam eros, venenatis cursus justo vel, imperdiet lobortis risus. Proin consectetur erat a faucibus tempor. Cras id ipsum et magna blandit porttitor eget at neque.
+A *leaf* is a `nodeType` object for which at least one of `lLink` and `rLink` is not null. If `p` is not null *and* `p.lLink == p.rLink == nullptr`, then we add one to the sum of the leaves. Hence the recursive implementation is as follows:
+```cpp
+template <class elemType> leavesCount(nodeType<elemType> *p)
+{
+    if (p == nullptr) { return 0; }
+    if (p->lLink == nullptr && p->rLink == nullptr) { return 1; }
+    return leavesCount(p->lLink) + leavesCount(p->rLink);
+}
+``` 
 
 ### Problem 4 Part 2.
 
@@ -152,6 +228,6 @@ See binaryTree.h
 
 ### Problem 4 Part 3.
 
-Morbi at enim sed libero dictum consectetur id lobortis tellus. Vestibulum leo tortor, imperdiet sit amet tellus vitae, semper sagittis augue. Morbi viverra vulputate urna. Vestibulum maximus blandit ante, at egestas tellus eleifend ultrices. Proin tortor nisl, efficitur a semper eleifend, aliquam ut mi. Ut non finibus nibh. Integer sed dolor scelerisque, dictum magna nec, fermentum mi. Phasellus at nisl nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie imperdiet tortor vitae tincidunt. Nunc volutpat, purus non convallis rhoncus, lectus dui faucibus felis, ut sodales augue magna nec mauris. Nunc ac lorem sit amet ipsum eleifend tempor. Ut molestie sapien ac mi consequat, id vestibulum nunc faucibus. Morbi augue tellus, cursus eget cursus quis, lacinia sit amet libero. Sed vel tincidunt dui. Nulla ex dui, mattis id fringilla id, finibus in quam. 
+This algorithm loops through all of the nodes in the tree, just like `nodeCount()` did, and so the time complexity is $\mathcal{O}(n)$.
 
 ---

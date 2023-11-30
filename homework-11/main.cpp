@@ -1,17 +1,17 @@
 /*****************************************************************************
  * Author:       Cody Vig
  * Assignment:   Homework 11
- * Due Date:     November 27, 2023.
+ * Due Date:     November 29, 2023.
  *****************************************************************************/
 
 #include "binarySearchTree.h"
 #include "binaryTree.h"
 #include <iostream>
 
-template <class elemType>                                       // To be deleted
-void printBT(const string &, const nodeType<elemType> *, bool); // To be deleted
-template <class elemType>                                       // To be deleted
-void printBT(const nodeType<elemType> *);                       // To be deleted
+template <class elemType>                                       // Visualization
+void printBT(const string &, const nodeType<elemType> *, bool); // Visualization
+template <class elemType>                                       // Visualization
+void printBT(const nodeType<elemType> *);                       // Visualization
 
 using namespace std;
 
@@ -36,9 +36,9 @@ int main()
         tree.insert(rand() % 90 + 10);
     }
 
-    cout << "Tree: \n";      // To be deleted
-    printBT(tree.getRoot()); // To be deleted
-    cout << endl;            // To be deleted
+    cout << "Tree: \n";      // Visualization
+    printBT(tree.getRoot()); // Visualization
+    cout << endl;            // Visualization
 
     cout << "Inorder traversal:   [";
     tree.inorderTraversal();
@@ -64,7 +64,6 @@ int main()
     return 0;
 }
 
-// To be deleted
 /**
  * Prints the binary tree to the console as depth-indented text. This is
  * primarily used to ensure `treeNodeCount()` and `treeLeavesCount()` are
@@ -92,7 +91,6 @@ void printBT(const string &prefix, const nodeType<elemType> *node, bool isLeft)
     }
 }
 
-// To be deleted
 /**
  * Prints the binary tree to the console as depth-indented text. This is
  * primarily used to ensure `treeNodeCount()` and `treeLeavesCount()` are
